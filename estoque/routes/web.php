@@ -17,5 +17,8 @@ Route::get('/', function () {
 });
 Route::resource('users', 'UsuariosController');
 Route::get('/produtos', 'ProdutoController@lista');
-Route::get('/produtos/mostra', 'ProdutoController@mostra');
+Route::get('/produtos/mostra/{id}', 'ProdutoController@mostra');
+Route::get('/produtos/novo', 'ProdutoController@novo');
+
+
 

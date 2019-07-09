@@ -1,7 +1,9 @@
-<?php   namespace estoque\Http\Controllers;
+<?php
 
-//Route::get('/produtos', 'ProdutoController@lista');
+namespace estoque\Http\Controllers;
+
 use DB;
+//use \Illuminate\Http\Request;
 use Request;
 
 
@@ -13,9 +15,15 @@ class ProdutoController extends Controller {
         return view('listagem')->with('produtos', $produtos);
     }
     public function mostra(){
-        $id = Request::INPUT('id',0);
+        //public function mostra(Request $request){
+        //$id=$this->request->input('id',0);
+        //$id = Request::INPUT('id',0);
+        $id = Request::route('id');
         $produto = DB::select('select * from produtos where id = ?',[$id]);
         return view('detalhes')->with('p', $produto[0]);
+    }
+    public function novo(){
+        return view('formulario');
     }
 }
 
